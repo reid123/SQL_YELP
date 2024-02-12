@@ -1,0 +1,559 @@
+/* Profile the data */
+
+/* Find the total  number of records in attribute table */
+SELECT *
+FROM  attribute ;
+
+Answer is 10000 
+
+/* Find the total  number of records in business table */
+SELECT *
+FROM  business;
+
+Answer is 10000 
+
+/* Find the total  number of records in category table */
+SELECT *
+FROM  Category;
+
+Answer is 10000 
+
+
+SELECT *
+FROM  Category;
+
+Answer is 10000 
+
+
+/* Find the total  number of records in Checkin table */
+SELECT *
+FROM  Checkin;
+
+Answer is 10000 
+
+/* Find the total  number of records in elite_years table */
+SELECT *
+FROM elite_years;
+
+Answer is 10000 
+
+/* Find the total  number of records in friend table */
+SELECT *
+FROM friend;
+
+Answer is 10000 
+
+/* Find the total  number of records in hours table */
+SELECT *
+FROM hours;
+
+Answer is 10000 
+
+/* Find the total  number of records in photo table */
+SELECT *
+FROM photo;
+
+Answer is 10000 
+
+/* Find the total  number of records in review table */
+SELECT *
+FROM review;
+
+Answer is 10000 
+
+/* Find the total  number of records in tip table */
+SELECT *
+FROM tip;
+
+Answer is 10000 
+
+/* Find the total  number of records in user table */
+SELECT *
+FROM user;
+
+Answer is 10000 
+
+\*Total Distanct Records by either foreign key or primary key for each table */
+
+ SELECT COUNT(Distinct id)
+FROM business;
+
++--------------------+
+| COUNT(distinct id) |
++--------------------+
+|              10000 |
++--------------------+
+
+
+ SELECT COUNT(distinct business_id)
+FROM hours;
+---------------------------+
+| COUNT(distinct business_id) |
++-----------------------------+
+|                        1562 |
+
+
+ SELECT COUNT(distinct business_id)
+FROM category;
++-----------------------------+
+| COUNT(distinct business_id) |
++-----------------------------+
+|                        2643 |
++-----------------------------+
+
+ SELECT COUNT(distinct business_id)
+FROM Attribute;
++-----------------------------+
+| COUNT(distinct business_id) |
++-----------------------------+
+|                        1115 |
++-----------------------------+
+
+ SELECT COUNT(distinct business_id)
+FROM review;
++-----------------------------+
+| COUNT(distinct business_id) |
++-----------------------------+
+|                        8090 |
+
+
+ SELECT COUNT(distinct business_id)
+FROM checkin;
+ COUNT(distinct business_id) |
++-----------------------------+
+|                         493 |
+
+
+ SELECT COUNT(Distinct  id), COUNT(distinct business_id)
+FROM photo;
+
++---------------------+-----------------------------+
+| COUNT(Distinct  id) | COUNT(distinct business_id) |
++---------------------+-----------------------------+
+|               10000 |                        6493 |
++---------------------+-----------------------------+
+
+ SELECT COUNT(DISTINCT user_id), COUNT(DISTINCT business_id)
+FROM tip;
++-------------------------+-----------------------------+
+| COUNT(DISTINCT user_id) | COUNT(DISTINCT business_id) |
++-------------------------+-----------------------------+
+|                     537 |                        3979 |
++-------------------------+-----------------------------+
+
+
+
+ SELECT COUNT(Distinct id)
+FROM user;
+
+-------------------+
+| COUNT(Distinct id) |
++--------------------+
+|              10000 |
+
+
+ SELECT COUNT(Distinct user_id)
+FROM friend;
++-------------------------+
+| COUNT(Distinct user_id) |
++-------------------------+
+|                      11 |
++-------------------------+
+
+ SELECT COUNT(Distinct user_id)
+FROM eLite_years;
++-------------------------+
+| COUNT(Distinct user_id) |
++-------------------------+
+|                    2780 |
++-------------------------+
+
+
+\* Check For Null Values */
+
+SELECT * 
+From user
+WHERE id = NULL or name = NULL or review_count = NULL or yelping_since = NULL or useful = NULL or funny = NULL or cool = NULL or fans= NULL or average_stars= NULL or compliment_hot= NULL or compliment_more= NULL or compliment_profile= NULL or compliment_cute= NULL or compliment_list= NULL or compliment_note= NULL or compliment_plain = NULL or compliment_cool= NULL or compliment_funny= NULL or compliment_writer= NULL or compliment_photos= NULL;
+
+
++----+------+--------------+---------------+--------+-------+------+------+---------------+----------------+-----------------+--------------------+-----------------+-----------------+-----------------+------------------+-----------------+------------------+-------------------+-------------------+
+| id | name | review_count | yelping_since | useful | funny | cool | fans | average_stars | compliment_hot | compliment_more | compliment_profile | compliment_cute | compliment_list | compliment_note | compliment_plain | compliment_cool | compliment_funny | compliment_writer | compliment_photos |
++----+------+--------------+---------------+--------+-------+------+------+---------------+----------------+-----------------+--------------------+-----------------+-----------------+-----------------+------------------+-----------------+------------------+-------------------+-------------------+
++----+------+--------------+---------------+--------+-------+------+------+---------------+----------------+-----------------+--------------------+-----------------+-----------------+-----------------+------------------+-----------------+------------------+-------------------+-------------------+
+(Zero rows)
+
+
+
+\* Find the min, max, and Avge */
+    SELECT Min(stars), Max(stars), Avg(stars)
+    FROM review
+
+i. Table: Review, Column: Stars
+	
+		min:	1	max:	5	avg: 3.7082
++------------+------------+------------+
+| Min(stars) | Max(stars) | Avg(stars) |
++------------+------------+------------+
+|          1 |          5 |     3.7082 |
++------------+------------+------------
+
+
+
+\* Find the min, max, and Avge */
+ SELECT Min(stars), Max(stars), Avg(stars)
+    FROM business
+
+ii. Table: Business, Column: Stars
+	
+		min:  1 		max:	5	avg: 3.6549
++------------+------------+------------+
+| Min(stars) | Max(stars) | Avg(stars) |
++------------+------------+------------+
+|        1.0 |        5.0 |     3.6549 |
++------------+------------+------------+
+
+
+\* Find the min, max, and Avge */
+SELECT Min(Likes), Max(Likes), Avg(Likes)
+    FROM tip
+iii. Table: Tip, Column: Likes
+	
+		min:	0	max:	2	avg: 0.0144
++------------+------------+------------+
+| Min(Likes) | Max(Likes) | Avg(Likes) |
++------------+------------+------------+
+|          0 |          2 |     0.0144 |
++------------+------------+------------+
+
+
+\* Find the min, max, and Avge */
+SELECT Min(count), Max(count), Avg(count)
+    FROM checkin
+iv. Table: Checkin, Column: Count
+	
+		min:	1	max:	53	avg:  1.9414
++------------+------------+------------+
+| Min(count) | Max(count) | Avg(count) |
++------------+------------+------------+
+|          1 |         53 |     1.9414 |
++------------+------------+------------+
+
+
+\* Find the min, max, and Avge */
+SELECT Min(review_count), Max(review_count), Avg(review_count)
+    FROM user
+v. Table: User, Column: Review_count
+	
+		min:	0	max:	2000	avg: 24.2995
++-------------------+-------------------+-------------------+
+| Min(review_count) | Max(review_count) | Avg(review_count) |
++-------------------+-------------------+-------------------+
+|                 0 |              2000 |           24.2995 |
++-------------------+-------------------+-------------------+
+		
+\* 5. list the cities with most reviews in descending order 
+SELECT city, Count(reviews) As TotalReviews
+FROM business
+Group by city
+Order by Count(reviews) desc;
++-----------------+--------------+
+| city            | TotalReviews |
++-----------------+--------------+
+| Las Vegas       |         1561 |
+| Phoenix         |         1001 |
+| Toronto         |          985 |
+| Scottsdale      |          497 |
+| Charlotte       |          468 |
+| Pittsburgh      |          353 |
+| Montréal        |          337 |
+| Mesa            |          304 |
+| Henderson       |          274 |
+| Tempe           |          261 |
+| Edinburgh       |          239 |
+| Chandler        |          232 |
+| Cleveland       |          189 |
+| Gilbert         |          188 |
+| Glendale        |          188 |
+| Madison         |          176 |
+| Mississauga     |          150 |
+| Stuttgart       |          141 |
+| Peoria          |          105 |
+| Markham         |           80 |
+| Champaign       |           71 |
+| North Las Vegas |           70 |
+| North York      |           64 |
+| Surprise        |           60 |
+| Richmond Hill   |           54 |
++-----------------+--------------+
+
+\* 6. Find the distribution of star ratings to the business in the following cities */
+
+\* Avon */ 
+SELECT name , stars , review_count
+FROM business
+WHERE city = 'Avon';
++-----------------------------------------------+-------+--------------+
+| name                                          | stars | review_count |
++-----------------------------------------------+-------+--------------+
+| Helen & Kal's                                 |   2.5 |            3 |
+| Marc's                                        |   4.0 |            4 |
+| Hoban Pest Control                            |   5.0 |            3 |
+| Light Salon & Spa                             |   3.5 |            7 |
+| Portrait Innovations                          |   1.5 |           10 |
+| Winking Lizard Tavern                         |   3.5 |           31 |
+| Dervish Mediterranean & Turkish Grill         |   4.5 |           31 |
+| Mulligans Pub and Grill                       |   3.5 |           50 |
+| Mr. Handyman of Cleveland's Northwest Suburbs |   2.5 |            3 |
+| Cambria hotel & suites Avon - Cleveland       |   4.0 |           17 |
++-----------------------------------------------+-------+--------------+
+
+\* Beachwood */ 
+SELECT name , stars , review_count
+FROM business
+WHERE city = 'Beachwood';
++---------------------------------+-------+--------------+
+| name                            | stars | review_count |
++---------------------------------+-------+--------------+
+| Maltz Museum of Jewish Heritage |   3.0 |            8 |
+| Charley's Grilled Subs          |   3.0 |            3 |
+| Sixth & Pine                    |   4.5 |           14 |
+| Beechmont Country Club          |   5.0 |            6 |
+| Hyde Park Prime Steakhouse      |   4.0 |           69 |
+| Origins                         |   4.5 |            3 |
+| Fyodor Bridal Atelier           |   5.0 |            4 |
+| College Planning Network        |   2.0 |            8 |
+| Lucky Brand Jeans               |   3.5 |            3 |
+| American Eagle Outfitters       |   3.5 |            3 |
+| Shaker Women's Wellness         |   5.0 |            6 |
+| Avis Rent A Car                 |   2.5 |            3 |
+| Cleveland Acupuncture           |   5.0 |            3 |
+| Studio Mz                       |   5.0 |            4 |
+
+\* 7. Find the top 3 users based on their total number of reviews:*/
+
+SELECT name , id , review_count
+FROM user
+ORDER BY review_count desc;
+
++-----------+------------------------+--------------+
+| name      | id                     | review_count |
++-----------+------------------------+--------------+
+| Gerald    | -G7Zkl1wIWBBmD0KRy_sCw |         2000 |
+| Sara      | -3s52C4zL_DHRK0ULG6qtg |         1629 |
+| Yuri      | -8lbUNlXVSoXqaRRiHiSNg |         1339 |
+
+
+\*8. Does posing more reviews correlate with more fans? */
+SELECT name , id , review_count , fans
+FROM user
+ORDER BY review_count desc;
+
+no, it doesnt! for example Gerald has 2000 review count with 253 fans, wheras MIMI has 968 review count with 497 fans.
+
+\*9. Are there more reviews with the word "love" or with the word "hate" in them? */
+SELECT COUNT(*)
+FROM review
+WHERE text LIKE '%love%';
++----------+
+| COUNT(*) |
++----------+
+|     1780 |
++----------+
+
+SELECT COUNT(*)
+FROM review
+WHERE text LIKE '%hate%';
++----------+
+| COUNT(*) |
++----------+
+|      232 |
++----------+
+
+\*10. Find the top 10 users with the most fans:*/
+SELECT name, fans
+FROM user
+order by fans desc;
++-----------+------+
+| name      | fans |
++-----------+------+
+| Amy       |  503 |
+| Mimi      |  497 |
+| Harald    |  311 |
+| Gerald    |  253 |
+| Christine |  173 |
+| Lisa      |  159 |
+| Cat       |  133 |
+| William   |  126 |
+| Fran      |  124 |
+| Lissa     |  120 |
+| Mark      |  115 |
+| Tiffany   |  111 |
+| bernice   |  105 |
+| Roanna    |  104 |
+| Angela    |  101 |
+| .Hon      |  101 |
+| Ben       |   96 |
+| Linda     |   89 |
+| Christina |   85 |
+| Jessica   |   84 |
+| Greg      |   81 |
+| Nieves    |   80 |
+| Sui       |   78 |
+| Yuri      |   76 |
+| Nicole    |   73 |
++-----------+------+
+
+
+\*  Part 2: Inferences and Analysis */
+\*  Pick one city and category of your choice and group the businesses in that city or category by their overall star rating.*/ 
+
+We will study in Pittsburgh
+
+ SELECT city, stars, C.category
+ FROM business B inner join category C 
+ On B.id = C.business_id
+ WHere city ="Pittsburgh"
+ group by stars
+
++------------+-------+-----------+
+| city       | stars | category  |
++------------+-------+-----------+
+| Pittsburgh |   2.5 | Pizza     |
+| Pittsburgh |   3.0 | Mexican   |
+| Pittsburgh |   3.5 | Nightlife |
+| Pittsburgh |   4.5 | Food      |
+| Pittsburgh |   5.0 | Shopping  |
++------------+-------+-----------+
+
+\* Do the two groups you chose to analyze have a different distribution of hours? */
+Will do Pittsburgh vs Phoenix
+
+
+The answer is Yes, they have differenr distrubution of hours  
+
+ SELECT B.city, B.stars, C.category, H.hours
+ FROM business B inner join category C 
+ On B.id = C.business_id
+ inner join hours H On
+ B.id = H.business_id
+ WHere city ="Pittsburgh"
+ group by stars;
++------------+-------+----------+----------------------+
+| city       | stars | category | hours                |
++------------+-------+----------+----------------------+
+| Pittsburgh |   2.5 | Pizza    | Saturday|11:00-3:00  |
+| Pittsburgh |   3.0 | Mexican  | Saturday|11:00-0:00  |
+| Pittsburgh |   5.0 | Shopping | Saturday|10:00-18:00 |
+
+
+\* ii. Do the two groups you chose to analyze have a different number of reviews?  */
+Yes
+
+SELECT B.city, B.stars, C.category, H.hours, B.review_count
+ FROM business B inner join category C 
+ On B.id = C.business_id
+ inner join hours H On
+ B.id = H.business_id
+ WHere city ="Pittsburgh"
+ group by stars;
+
++------------+-------+----------+----------------------+--------------+
+| city       | stars | category | hours                | review_count |
++------------+-------+----------+----------------------+--------------+
+| Pittsburgh |   2.5 | Pizza    | Saturday|11:00-3:00  |           28 |
+| Pittsburgh |   3.0 | Mexican  | Saturday|11:00-0:00  |          103 |
+| Pittsburgh |   5.0 | Shopping | Saturday|10:00-18:00 |            8 |
++------------+-------+----------+----------------------+--------------+
+
+
+\*  Are you able to infer anything from the location data provided between these two groups? Explain.   */
+Yes, the zip code seems to play a big role in the city. The busiensses in the same neighbour seesm to have the same hours and closer hours 
+
+SELECT
+B.name, B.city,B.postal_code, C.category, B.stars, H.hours, B.review_count
+FROM (business B inner join category C on
+ B.id = C.business_id) inner join hours H on
+H.business_id = C.business_id
+where B.city = 'Pittsburgh' 
+ group by B.stars;
+
+
++-----------------------+------------+-------------+----------+-------+----------------------+--------------+
+| name                  | city       | postal_code | category | stars | hours                | review_count |
++-----------------------+------------+-------------+----------+-------+----------------------+--------------+
+| Papa Da Vinci         | Pittsburgh | 15213       | Pizza    |   2.5 | Saturday|11:00-3:00  |           28 |
+| Mad Mex - South Hills | Pittsburgh | 15220       | Mexican  |   3.0 | Saturday|11:00-0:00  |          103 |
+| PRO BIKE+RUN          | Pittsburgh | 15205       | Shopping |   5.0 | Saturday|10:00-18:00 |            8 |
++-----------------------+------------+-------------+----------+-------+----------------------+--------------+
+
+
+
+
+\* Group business based on the ones that are open and the ones that are closed. What differences can you find between the ones that are still open and the ones that are closed? List at least two differences and the SQL code you used to arrive at your answer */
+
+SELECT
+    COUNT(DISTINCT(id)) Num_business, AVG(review_count) avgerage_reviews, SUM(review_count) total_reviews,AVG(stars) average_ratings,is_open
+FROM business
+GROUP BY is_open
+
++--------------+--------------------+---------------+-------------------+---------+
+| Num_business |   avgerage_reviews | total_reviews |   average_ratings | is_open |
++--------------+--------------------+---------------+-------------------+---------+
+|         1520 | 23.198026315789473 |         35261 | 3.520394736842105 |       0 |
+|         8480 | 31.757075471698112 |        269300 | 3.679009433962264 |       1 |
++--------------+--------------------+---------------+-------------------+---------+
+
+Difference 1: Business that are still open till now have hihger verage reviews but very close average ratings.
+Difference 2: the total review are way higher in the business that are still in business comparing to the closed one. 
+
+
+\*3. For this last part of your analysis, you are going to choose the type of analysis you want to conduct on the Yelp dataset and are going to prepare the data for analysis.   */  
+\* i. Indicate the type of analysis you chose to do:*/
+I decide to see how many poeple checckin in placed based on how mnay stars and reviews it has. I wanted to see if people tend to visit restaurants with higher ratings.
+
+\*ii. Write 1-2 brief paragraphs on the type of data you will need for your analysis and why you chose that data:  */
+For my analysis I need to you the 2 tables: business and checkin. From the business table I retrieved the name, stars and review_count. From checkin table, I retrieved date of checkin and count of checkin. 
+I chose these data because these infomration will help me see if people checkin 
+From my finidng, poepple seem to checkin in theatre daily more than writing reviews online. Also, people tend to check in in places with higher 3.5 stars. 
+
+
+\* iii. Output of your finished dataset: */
+
+
++----------------------------------------------------+----------------+-------+-------+--------------+
+| name                                               | date           | count | stars | review_count |
++----------------------------------------------------+----------------+-------+-------+--------------+
+| Atlas Cinemas                                      | Monday-2:00    |     1 |   3.0 |            8 |
+| Berkshire Hills Golf Course                        | Thursday-15:00 |     1 |   3.0 |            7 |
+| Brownie's Market                                   | Sunday-21:00   |     1 |   4.0 |            4 |
+| Burger King                                        | Sunday-19:00   |     2 |   1.0 |            4 |
+| CVS Pharmacy                                       | Tuesday-1:00   |     1 |   3.0 |            6 |
+| Case Western Reserve University Faclty Dntl Prctce | Sunday-18:00   |     1 |   1.5 |            3 |
+| Chagrin Valley Little Theatre                      | Monday-22:00   |     3 |   4.5 |            4 |
+| Chapman's Food Mart                                | Saturday-21:00 |     1 |   4.0 |            5 |
+| Courtyard Cleveland Willoughby                     | Friday-1:00    |     1 |   3.0 |           11 |
+| Cracker Barrel Old Country Store                   | Tuesday-22:00  |     1 |   3.5 |           27 |
+| Dairy Queen                                        | Saturday-23:00 |     1 |   4.5 |            3 |
+| Davitino's Restaurant                              | Saturday-22:00 |     1 |   3.0 |           19 |
+| Days Inn Willoughby/Cleveland                      | Saturday-5:00  |     1 |   1.0 |           12 |
+| Dons C A R S                                       | Friday-15:00   |     1 |   4.0 |            4 |
+| Ferdl Aster Ski Shop                               | Sunday-21:00   |     1 |   3.5 |            3 |
+| Galleria Gowns                                     | Saturday-17:00 |     1 |   4.5 |           16 |
+| Highland Square Tavern                             | Monday-23:00   |     1 |   2.5 |            3 |
+| John Christ Winery                                 | Thursday-19:00 |     1 |   3.0 |           27 |
+| LongHorn Steakhouse                                | Tuesday-23:00  |     3 |   3.5 |           21 |
+| Manakiki Golf Course-Cleveland Metroparks          | Tuesday-21:00  |     1 |   3.5 |            5 |
+| Panda Chinese Restaurant                           | Thursday-19:00 |     1 |   3.5 |           16 |
+| Pizza Cutter                                       | Thursday-1:00  |     1 |   4.0 |           11 |
+| Red Wagon Farm                                     | Saturday-17:00 |     1 |   3.5 |           13 |
+| Rite Aid                                           | Tuesday-0:00   |     1 |   2.0 |            6 |
+| Spudnut Shop Donuts                                | Thursday-12:00 |     1 |   4.5 |           21 |
++----------------------------------------------------+----------------+-------+-------+--------------+
+
+
+
+\* Provide the SQL: */
+SELECT B.name, CH.date, CH.count, B.stars, B.review_count
+FROM business B inner join checkin Ch on B.id = CH.business_id
+GROUP BY B.name
+
